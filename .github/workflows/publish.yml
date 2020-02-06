@@ -13,10 +13,10 @@ jobs:
     - name: Run Docker build
       run: docker build .
               
-#     - name: Publish Docker
-#     - uses: elgohr/Publish-Docker-Github-Action@2.12
-#       with:
-#         username: $GITHUB_ACTOR
-#         password: ${{ secrets.GITHUB_TOKEN }}
-#         registry: docker.pkg.github.com
+    - name: Publish Docker
+    - uses: elgohr/Publish-Docker-Github-Action@2.12
+      with:
+        username: $GITHUB_ACTOR
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
         
