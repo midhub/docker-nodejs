@@ -16,6 +16,7 @@ jobs:
     - name: Publish Docker
       uses: elgohr/Publish-Docker-Github-Action@2.12
       with:
+        name: docker-node-test
         username: $GITHUB_ACTOR
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
