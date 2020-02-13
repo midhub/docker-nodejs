@@ -1,2 +1,2 @@
-# -docker-nodejs
+# Docker-nodejs
 Basic nodejs docker image for crypto applications
