@@ -1,22 +1,23 @@
-name: CI
+name: Build and Publish on release published
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
-  
   build:
-    
+
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: Run Docker build
-      run: docker build .
-              
-    - name: Publish Docker
-      uses: elgohr/Publish-Docker-Github-Action@2.12
-      with:
-        name: midhub/docker-nodejs/docker-nodejs-crypto
-        username: $GITHUB_ACTOR
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
+      - uses: actions/checkout@v2
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Publish Docker
+        uses: elgohr/Publish-Docker-Github-Action@2.12
+        with:
+          name: midhub/nodejs-crypto
+          username: vetermanve
+          password: ${{secrets.DOCKER_AUTH_TOKEN}}
+          tags: "latest, ${{ steps.get_version.outputs.VERSION }}"
