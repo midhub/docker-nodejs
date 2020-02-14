@@ -20,4 +20,4 @@ jobs:
           name: midhub/nodejs-crypto
           username: vetermanve
           password: ${{secrets.DOCKER_AUTH_TOKEN}}
-          tags: "latest, ${{ steps.get_version.outputs.VERSION }}"
+          tags: "latest, 10, ${{ steps.get_version.outputs.VERSION }}"
