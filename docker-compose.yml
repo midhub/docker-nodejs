@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  docker-nodejs:
+    build: .
+    container_name: 'docker-nodejs'
+    network_mode: 'none'
